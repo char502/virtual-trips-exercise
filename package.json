@@ -25,7 +25,8 @@
     "knex": "^0.21.16",
     "react-loading-bar": "0.0.7",
     "react-top-loading-bar": "^2.0.1",
-    "sqlite3": "^5.0.1"
+    "sqlite3": "^5.0.1",
+    "yarn": "^1.22.10"
   },
   "devDependencies": {
     "nodemon": "^2.0.7",
