@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import LoadingBar from 'react-top-loading-bar';
-// import 'react-loading-bar/dist/index.css';
 
 const DataFetching = () => {
   const [searchLocation, setSearchLocation] = useState('');
@@ -11,10 +10,6 @@ const DataFetching = () => {
   const handleChange = e => {
     let search = e.target.value;
 
-    // let alphaOnly = /'^[a-zA-Z]*$'/;
-    // if (alphaOnly.test(search)) {
-    // }
-
     if (search.length !== 0) {
       let result = search.charAt(0).toUpperCase() + search.slice(1);
 
@@ -22,19 +17,9 @@ const DataFetching = () => {
     }
   };
 
-  //   const handleSubmit = e => {
-  //     e.preventDefault();
-
-  //     setSearchLocation(searchLocation);
-  //   };
-
   const handleClearSearch = () => {
     setSearchLocation('');
   };
-
-  // GET /locations?q=query
-  // Where query will be a partial name of a location. For example
-  // GET /locations?q=hastin
 
   useEffect(() => {
     let link = '';
@@ -50,7 +35,7 @@ const DataFetching = () => {
       })
       .catch(err => {
         console.log(err);
-        setIsLoading(isLoading + 50);
+        setIsLoading(isLoading + 30);
       });
   }, [searchLocation]);
 
@@ -59,13 +44,11 @@ const DataFetching = () => {
       <div>
         <LoadingBar
           color='lightseagreen'
-          progress={isLoading + 1}
+          progress={isLoading}
           onLoaderFinished={() => setIsLoading(0)}
         />
       </div>
-
       <div style={{ padding: '20px' }}>
-        {/* <form onSubmit={handleSubmit}> */}
         <input
           type='text'
           name='searchTerm'
@@ -73,12 +56,13 @@ const DataFetching = () => {
           onChange={handleChange}
           placeholder={'Search for Point of Interest'}
         />
-        {/* <button type='submit'>Search</button> */}
-        <div>
+        <div
+          style={{
+            margin: '10px',
+          }}
+        >
           <button onClick={handleClearSearch}>Clear Search</button>
         </div>
-        {/* </form> */}
-
         <div
           style={{
             backgroundColor: 'lightBlue',

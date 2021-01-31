@@ -3,7 +3,6 @@ const app = express();
 const bodyParser = require('body-parser');
 const db = require('./db/geolocation');
 const cors = require('cors');
-const knex = require('knex');
 const port = process.env.PORT || 5000;
 
 app.use(cors());
@@ -21,6 +20,7 @@ app.get('/get_data_GB/locations', async (req, res) => {
   }
 });
 
+// For heroku deploy
 if (process.env.NODE_ENV === 'production') {
   app.use(express.static(path.join(__dirname, 'client/build')));
 
