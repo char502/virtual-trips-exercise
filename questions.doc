@@ -7,15 +7,26 @@ Q1: Explain the output of the following code and why
     console.log("2");
 ```
 
-The setTimeout function will call the anonymous function (with console.log("1")) after a specified delay. 
+The is an example of an asynchronous callback.
 
-The anonymous function calls console.log("1") but won’t run it for 100 milliseconds. 
+setTimeout allows you to call a function with a time delay.
 
-In the meantime console.log("2") is called, which isn’t subject to a delay, so it will run immediately. The result will therefore be:
+The setTimeout function above calls the anonymous function (with console.log("1")) but won’t run it straight away, it will just add it to the task queue. 
+
+In the meantime console.log("2") is called, (which isn’t subject to a delay), so it will run immediately. 
+
+After approximately 100 milliseconds (depending on how long it took the second part of the code to run), console.log("1") is taken off the task queue and run.
+
+setTimeout only runs once.
+
+
+The result will therefore be:
+
+Result: 
 
 ```js
-console.log("2");
-console.log("1");
+“2"
+“1"
 
 ```
 
@@ -32,7 +43,33 @@ Q2: Explain the output of the following code and why
     foo(0);
 ```
 
-This one is confusing?
+
+Result:
+
+```js
+
+10
+9
+8
+7
+6
+5
+4
+3
+2
+1
+
+
+This is because when function foo runs, it’s passed argument is 0. This passes the (d < 0) test so foo is run again (inside the if statement) and incremented by 1. This continues (2, 3, 4… until d fails the test (it reaches 10).
+
+When d becomes 10 it fails the ‘if’ test so moves to the next part of the original foo function which is to print the value of d to the screen.
+
+Numbers 1 to 9, are held in memory as the code is still running, and there is no return statement to push those numbers off the task queue.
+
+Once 10 is run, numbers 1 to 9 (which are all values of d), (which are still waiting in the queue) are now printed to the screen by an implicit return at the end of the function which send them to the console.log call.
+
+The queue releases data last in first out, as 9 was the last in, it will be the first to then be printed to the screen, followed by 8, then 7 etc
+
 
 
 Q3: If nothing is provided to `foo` we want the default response to be `5`. Explain the potential issue with the following code:
@@ -43,6 +80,13 @@ Q3: If nothing is provided to `foo` we want the default response to be `5`. Expl
       console.log(d);
     }
 ```
+
+One issue is if something other than a number (i.e. a letter) is passed in to represent d. If d needs to be a number to get this function to work there will be an error
+
+With es6 and beyond a better way to provide a default value to d would be to add it to the function parentheses where it can be explicitly defined as a number i.e.
+
+function foo(d = 1) {
+
 
 
 
@@ -62,9 +106,9 @@ This is an example of a closure.
 
 The output will be 3
 
-The result of foo (a = 1) will be retained even after it has completed running and will be available to the result of the inner function (b = 2)  when it runs.
+The result of foo (a = 1) will be retained (because of closure) even after it has completed running (and assigned to the variable bar) and will be available to the result of the inner function (b = 2 (–> as passed in by bar)(which is now foo :-/)) when it runs.
 
-This means the calculation a + b (or 1 + 2) can occur and this is why the final result is 3
+This means the calculation a + b (or now 1 + 2) can occur and this is why the final result is 3
 
 
 Q5: Explain how the following function would be used
@@ -79,4 +123,4 @@ Q5: Explain how the following function would be used
 
 I think this is an example of currying but I’m not sure
 
-A stopwatch?
+
