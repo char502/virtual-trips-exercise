@@ -25,8 +25,8 @@ The result will therefore be:
 Result: 
 
 ```js
-“2"
-“1"
+"2"
+"1"
 
 ```
 
@@ -60,7 +60,7 @@ Result:
 1
 
 
-This is because when function foo runs, it’s passed argument is 0. This passes the (d < 0) test so foo is run again (inside the if statement) and incremented by 1. This continues (2, 3, 4… until d fails the test (it reaches 10).
+This is because when function foo runs, its passed argument is 0. This passes the (d < 0) test so foo is run again (inside the if statement) and incremented by 1. This continues (2, 3, 4… until d fails the test (it reaches 10).
 
 When d becomes 10 it fails the ‘if’ test so moves to the next part of the original foo function which is to print the value of d to the screen.
 
@@ -81,7 +81,7 @@ Q3: If nothing is provided to `foo` we want the default response to be `5`. Expl
     }
 ```
 
-One issue is if something other than a number (i.e. a letter) is passed in to represent d. If d needs to be a number to get this function to work there will be an error
+One issue is if something other than a number (i.e. a letter) is passed in to represent d. If d needs to be a number to get this function to work, there will be an error.
 
 With es6 and beyond a better way to provide a default value to d would be to add it to the function parentheses where it can be explicitly defined as a number i.e.
 
@@ -106,9 +106,9 @@ This is an example of a closure.
 
 The output will be 3
 
-The result of foo (a = 1) will be retained (because of closure) even after it has completed running (and assigned to the variable bar) and will be available to the result of the inner function (b = 2 (–> as passed in by bar)(which is now foo :-/)) when it runs.
+The result of foo (a = 1) will be retained (because of closure) even after it has completed running (and assigned to the variable bar). It will be available to the result of the inner function (b = 2 (–> as passed in by bar)(which is now foo :-/)) when it runs.
 
-This means the calculation a + b (or now 1 + 2) can occur and this is why the final result is 3
+This means the calculation a + b (or now 1 + 2) can occur and therefore the final result is 3
 
 
 Q5: Explain how the following function would be used
@@ -121,6 +121,7 @@ Q5: Explain how the following function would be used
     }
 ```
 
-I think this is an example of currying but I’m not sure
+I think done() will be called before setTimeout because setTimeout requires information from done() in order to work.
 
+Other than that I’m not sure
 
