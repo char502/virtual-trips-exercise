@@ -14,4 +14,4 @@ Virtual Trips App
 - The locations will be ordered alphabetically by the closest matches as you type
 - Results will only start returning when the query contains two or more characters
 - A green loader bar has been added at the top of the app to show the progress of the loading results
-- dep
+- deploy
