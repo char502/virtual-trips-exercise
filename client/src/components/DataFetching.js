@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import LoadingBar from 'react-top-loading-bar';
-import 'react-loading-bar/dist/index.css';
+// import 'react-loading-bar/dist/index.css';
 
 const DataFetching = () => {
   const [searchLocation, setSearchLocation] = useState('');
@@ -22,11 +22,11 @@ const DataFetching = () => {
     }
   };
 
-  const handleSubmit = e => {
-    e.preventDefault();
+  //   const handleSubmit = e => {
+  //     e.preventDefault();
 
-    setSearchLocation(searchLocation);
-  };
+  //     setSearchLocation(searchLocation);
+  //   };
 
   const handleClearSearch = () => {
     setSearchLocation('');
@@ -65,19 +65,19 @@ const DataFetching = () => {
       </div>
 
       <div style={{ padding: '20px' }}>
-        <form onSubmit={handleSubmit}>
-          <input
-            type='text'
-            name='searchTerm'
-            value={searchLocation}
-            onChange={handleChange}
-            placeholder={'Search for Point of Interest'}
-          />
-          <button type='submit'>Search</button>
-          <div>
-            <button onClick={handleClearSearch}>Clear Search</button>
-          </div>
-        </form>
+        {/* <form onSubmit={handleSubmit}> */}
+        <input
+          type='text'
+          name='searchTerm'
+          value={searchLocation}
+          onChange={handleChange}
+          placeholder={'Search for Point of Interest'}
+        />
+        {/* <button type='submit'>Search</button> */}
+        <div>
+          <button onClick={handleClearSearch}>Clear Search</button>
+        </div>
+        {/* </form> */}
 
         <div
           style={{
