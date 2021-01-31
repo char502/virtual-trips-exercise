@@ -13,7 +13,7 @@ function getLocationData(name) {
 
   // console.log(silly);
 
-  return knex('data_GB').where('name', 'like', name);
+  return knex('data_GB').where('name', 'like', name).orderBy('name');
 
   // if (name !== '') {
   //   return knex('data_GB').where('name', 'like', `%${name}%`);

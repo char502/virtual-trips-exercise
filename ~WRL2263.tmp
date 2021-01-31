@@ -20,6 +20,14 @@ console.log("1");
 ```
 
 
+
+
+
+
+
+
+
+
 Q2: Explain the output of the following code and why
 
 ```js
@@ -32,9 +40,6 @@ Q2: Explain the output of the following code and why
     foo(0);
 ```
 
-This one is confusing?
-
-
 Q3: If nothing is provided to `foo` we want the default response to be `5`. Explain the potential issue with the following code:
 
 ```js
@@ -43,8 +48,6 @@ Q3: If nothing is provided to `foo` we want the default response to be `5`. Expl
       console.log(d);
     }
 ```
-
-
 
 Q4: Explain the output of the following code and why
 
@@ -58,15 +61,6 @@ Q4: Explain the output of the following code and why
     console.log(bar(2))
 ```
 
-This is an example of a closure.
-
-The output will be 3
-
-The result of foo (a = 1) will be retained even after it has completed running and will be available to the result of the inner function (b = 2)  when it runs.
-
-This means the calculation a + b (or 1 + 2) can occur and this is why the final result is 3
-
-
 Q5: Explain how the following function would be used
 
 ```js
@@ -76,7 +70,3 @@ Q5: Explain how the following function would be used
       }, 100);
     }
 ```
-
-I think this is an example of currying but I’m not sure
-
-A stopwatch?

@@ -6,12 +6,13 @@ const DataFetching = () => {
   const [locationData, setLocationData] = useState([]);
   //   const [isLoading, setIsLoading] = useState(true);
 
-  //   const getLocationData = `${locationData}/locations?q=${searchTerm}`;
-  //   const getLocationData = `${locationData}/locations?q=${searchLocation}`;
-  //   console.log(getLocationData);
-
   const handleChange = e => {
     let search = e.target.value;
+
+    // let alphaOnly = /'^[a-zA-Z]*$'/;
+    // if (alphaOnly.test(search)) {
+
+    // }
 
     if (search.length) {
       let result = search.charAt(0).toUpperCase() + search.slice(1);
@@ -20,37 +21,36 @@ const DataFetching = () => {
     }
   };
 
-  console.log(searchLocation);
-
   const handleSubmit = e => {
     e.preventDefault();
 
-    // Change searchLocation to have an uppercase letter
-
     setSearchLocation(searchLocation);
 
-    setSearchLocation('');
+    // setSearchLocation('');
+
+    // setLocationData(searchLocation);
+
+    // setSearchLocation('');
   };
 
-  console.log(locationData);
+  const handleClearSearch = () => {
+    setSearchLocation('');
+  };
 
   // GET /locations?q=query
   // Where query will be a partial name of a location. For example
   // GET /locations?q=hastin
 
   useEffect(() => {
-    const link = `/get_data_GB/locations?q=${searchLocation}`;
-    console.log(link);
+    let link = '';
+    searchLocation
+      ? (link = `/get_data_GB/locations?q=${searchLocation}%`)
+      : (link = `/get_data_GB/locations?q=${searchLocation}`);
+
     axios
       .get(link)
-      //   .get('/get_data_GB')
       .then(res => {
-        console.log(res.data.locations);
-
-        // setLocationData(res.data.locations);
         setLocationData(res.data.locations);
-        console.log(locationData);
-        // console.log(res.data.locations);
       })
       .catch(err => {
         console.log(err);
@@ -68,6 +68,9 @@ const DataFetching = () => {
           placeholder={'Search for Point of Interest'}
         />
         <button type='submit'>Search</button>
+        <div>
+          <button onClick={handleClearSearch}>Clear Search</button>
+        </div>
       </form>
 
       <div
