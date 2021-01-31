@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
-import LoadingBar from 'react-top-loading-bar';
+import DisplayData from './DisplayData';
 
 const DataFetching = () => {
   const [searchLocation, setSearchLocation] = useState('');
@@ -41,57 +41,14 @@ const DataFetching = () => {
 
   return (
     <>
-      <div>
-        <LoadingBar
-          color='lightseagreen'
-          progress={isLoading}
-          onLoaderFinished={() => setIsLoading(0)}
-        />
-      </div>
-      <div style={{ padding: '20px' }}>
-        <input
-          type='text'
-          name='searchTerm'
-          value={searchLocation}
-          onChange={handleChange}
-          placeholder={'Search for Point of Interest'}
-        />
-        <div
-          style={{
-            margin: '10px',
-          }}
-        >
-          <button onClick={handleClearSearch}>Clear Search</button>
-        </div>
-        <div
-          style={{
-            backgroundColor: 'lightBlue',
-            maxWidth: '750px',
-            margin: '0 auto',
-          }}
-        >
-          {locationData.map(location => {
-            return (
-              <div key={location.geonameid}>
-                <ul>
-                  <li style={{ listStyleType: 'none' }}>
-                    <span style={{ fontWeight: 'bold' }}>NAME:</span>{' '}
-                    {location.name}{' '}
-                    <span>
-                      <span style={{ fontWeight: 'bold' }}>LAT:</span>{' '}
-                      {location.latitude}
-                    </span>{' '}
-                    <span>
-                      <span style={{ fontWeight: 'bold' }}>LON:</span>{' '}
-                      {location.longitude}
-                    </span>
-                  </li>
-                </ul>
-              </div>
-            );
-          })}
-        </div>
-      </div>
+      <DisplayData
+        searchLocation={searchLocation}
+        locationData={locationData}
+        handleChange={handleChange}
+        handleClearSearch={handleClearSearch}
+        isLoading={isLoading}
+        setIsLoading={setIsLoading}
+      />
     </>
   );
 };
